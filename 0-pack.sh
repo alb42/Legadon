@@ -1,9 +1,9 @@
 #!/bin/bash -e
 
-mkdir lib
+mkdir -p lib
 # Amiga 68020
 echo "compile Amiga 020"
-mkdir lib/m68k-amiga
+mkdir -p lib/m68k-amiga
 rm -f package/Legadon/Legadon
 rm -f package/Legadon$1.lha
 fpc4amiga.sh -XX -Xs -CX -O3 -B -FUlib/m68k-amiga Legadon.lpr >msg.log
@@ -29,7 +29,7 @@ cd ..
 
 # AROS i386
 echo "compile AROS i386"
-mkdir lib/i386-aros
+mkdir -p lib/i386-aros
 rm -f package/Legadon/Legadon
 rm -f package/Legadon$1_AROS.lha
 fpc4aros.sh -XX -Xs -CX -O3 -B -FUlib/i386-aros Legadon.lpr -opackage/Legadon/Legadon >>msg.log
@@ -41,7 +41,7 @@ cd ..
 
 # AROS x64
 echo "compile AROS x64"
-mkdir lib/x86_64-aros
+mkdir -p lib/x86_64-aros
 rm -f package/Legadon/Legadon
 rm -f package/Legadon$1_AROS64.lha
 fpc4aros64.sh -XX -Xs -CX -O3 -B -FUlib/x86_64-aros Legadon.lpr -opackage/Legadon/Legadon >>msg.log
@@ -53,7 +53,7 @@ cd ..
 
 # AROS ARM
 echo "compile AROS ARM"
-mkdir lib/arm-aros
+mkdir -p lib/arm-aros
 rm -f package/Legadon/Legadon
 rm -f package/Legadon$1_AROSARM.lha
 fpc4arosarm.sh -XX -Xs -CX -O3 -B -FUlib/arm-aros Legadon.lpr -opackage/Legadon/Legadon >>msg.log
@@ -65,7 +65,7 @@ cd ..
 
 # MorphOS
 echo "compile MorphOS"
-mkdir lib/powerpc-morphos
+mkdir -p lib/powerpc-morphos
 rm -f package/Legadon/Legadon
 rm -f package/Legadon$1_MorphOS.lha
 fpc4mos.sh -XX -Xs -CX -O3 -B -FUlib/powerpc-morphos Legadon.lpr -opackage/Legadon/Legadon >>msg.log
@@ -77,7 +77,7 @@ cd ..
 
 # OS4
 echo "compile OS 4"
-mkdir lib/powerpc-amiga
+mkdir -p lib/powerpc-amiga
 rm -f package/Legadon/Legadon
 rm -f package/Legadon$1_OS4.lha
 fpc4os4.sh -XX -Xs -CX -O3 -B -XV -Avasm -FUlib/powerpc-amiga Legadon.lpr -opackage/Legadon/Legadon >>msg.log

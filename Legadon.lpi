@@ -64,7 +64,6 @@
     </CodeGeneration>
     <Linking>
       <Debugging>
-        <GenerateDebugInfo Value="False"/>
         <UseLineInfoUnit Value="False"/>
         <UseHeaptrc Value="True"/>
         <StripSymbols Value="True"/>

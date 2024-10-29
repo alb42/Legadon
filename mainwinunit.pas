@@ -236,29 +236,41 @@ begin
   //
 end;
 
+{.$define InspectUTF8}
+
 function MyTextConvert(Src: RawByteString): string; inline;
-{var
+{$ifdef InspectUTF8}
+var
   p: SizeInt;
   i: Integer;
-begin
-
-  p := Pos(' he asked', Src);
-  if P > 0 then
-  begin
-    P := P - 3;
-    for i := 0 to 10 do
-    begin
-      write(IntToHex(Byte(Src[P + i]), 2), ' ');
-    end;
-    writeln();
-  end;}
+{$endif}
 begin
   Src := StringReplace(Src, #226#128#156, '"', [rfReplaceAll]);
   Src := StringReplace(Src, #226#128#157, '"', [rfReplaceAll]);
   Src := StringReplace(Src, #226#128#158, '"', [rfReplaceAll]);
   Src := StringReplace(Src, #226#128#152, '''', [rfReplaceAll]);
   Src := StringReplace(Src, #226#128#153, '''', [rfReplaceAll]);
+  Src := StringReplace(Src, #226#128#154, '''', [rfReplaceAll]);
+  Src := StringReplace(Src, #226#128#147, '-', [rfReplaceAll]);
   Src := StringReplace(Src, #226#128#148, '-', [rfReplaceAll]);
+  Src := StringReplace(Src, #226#128#166, '...', [rfReplaceAll]);
+
+  Src := StringReplace(Src, #226#128#185, '<', [rfReplaceAll]);
+  Src := StringReplace(Src, #226#128#186, '>', [rfReplaceAll]);
+
+  {$ifdef InspectUTF8}
+  p := Pos(#226#128, Src);
+  if P > 0 then
+  begin
+    //P := P - 3;
+    for i := 0 to 20 do
+    begin
+      write(IntToHex(Byte(Src[P + i]), 2), '_', Src[P + i] + '_ ');
+    end;
+    writeln();
+  end;
+  {$endif}
+
 
   Result := Utf8ToAnsi(Src);
 end;
@@ -408,6 +420,7 @@ begin
 
   // ########### Read Page
   ListView := TMUIListView.Create;
+  ListView.Frame := MUIV_Frame_None;
   ListView.List := TMUIFloatText.Create;
   ListView.Parent := Page2;
 
@@ -446,7 +459,7 @@ begin
   PageLabel.Frame := MUIV_Frame_None;
   PageLabel.Parent := Grp2;
   //
-  TMUIRectangle.Create.Parent := Grp;
+  //TMUIRectangle.Create.Parent := Grp;
   //
   OnShow  := @ShowEvent;
 end;

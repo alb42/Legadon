@@ -6,7 +6,7 @@ uses
   mainwinunit, waitunit;
 
 const
-  VERSION = '$VER: Legadon 0.2 (23.10.2024)';
+  VERSION = '$VER: Legadon 0.3 (29.10.2024)';
 
 begin
   TMainWindow.Create;

@@ -84,3 +84,15 @@ package/Legadon
 Legadon
 *.lha
 *.log
+
+backup/
+
+Book2/
+
+Books
+
+*.lps
+
+*.uaem
+
+Legadon.ini
