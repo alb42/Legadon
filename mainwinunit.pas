@@ -314,7 +314,8 @@ begin
     DT := TPictureDataType.Create;
     if DT.LoadFile(CoverFile) then
     begin
-      DB := TDrawBuffer.Create(DT.ImageSize.X, DT.ImageSize.Y, Self.Screen^.BitMap.Depth, @(Self.Screen^.BitMap));
+      //DB := TDrawBuffer.Create(DT.ImageSize.X, DT.ImageSize.Y, Self.Screen^.BitMap.Depth, @(Self.Screen^.BitMap));
+      DB := TDrawBuffer.Create(DT.ImageSize.X, DT.ImageSize.Y, Self.Screen^.BitMap.Depth, DT.Bitmap);
       BltBitMapRastPort(DT.Bitmap, 0, 0, DB.RP, 0, 0, DB.Width, DB.Height, $00c0);
     end;
     DT.Free;
