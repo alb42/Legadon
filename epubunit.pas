@@ -568,11 +568,17 @@ var
       case LowerCase(string(NNode.NodeName)) of
         '#text': NText := NText + UTF8Encode(NNode.TextContent);
         'br','hr': AddNText;
-        'p', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6':
+        'p':
           begin
             ExamineNodes(NNode);
             AddNText;
-          end
+            AddNText;
+          end;
+        'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6':
+          begin
+            ExamineNodes(NNode);
+            AddNText;
+          end;
         else
           ExamineNodes(NNode);
       end;
